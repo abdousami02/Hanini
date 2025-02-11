@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'food','middleware' => 'auth.food'],function(){
 
+Route::group(['prefix' => 'food','middleware' => 'auth.food'],function(){
     
+    Route::get('/', [DashboardController::class, 'index'])->name('food');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('food.dashboard');
 
     Route::get('/orders', [OrderController::class, 'index'])->name('food.orders');
