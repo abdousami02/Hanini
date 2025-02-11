@@ -1,0 +1,32 @@
+name: Laravel Auto Deployment
+
+on:
+  push:
+    branches: ["main", "home"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # - name: Set up PHP
+      #   uses: shivammathur/setup-php@v2
+
+      - name: Deploy to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # remote-dir: archi-pro.badnitech.com
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            ./.env
+            ./vendor/*
