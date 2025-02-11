@@ -1,0 +1,145 @@
+
+:root {
+    --darkgrey: #33312E;
+    --orange: #ff8552;
+    --orange-rgb: 255, 133, 82;
+    --lightgrey: #e6e6e6;
+    --lightblue: #A2C7E5;
+    --green: #1a936f;
+    --green-rgb: 26, 147, 111;
+}
+
+html {
+   background-color: var(--lightblue);
+}
+
+.hidden {
+   display: none;
+}
+
+.button {
+   width: 140px;
+   cursor: pointer;
+   padding: 1em;
+   border-radius: 0.2em;
+   border: none;
+   color: white;
+   font-weight: bold;
+   font-size: 1em;
+   transition: all .5s ease;
+   background-color: var(--orange);}
+
+   .button:hover {
+      background-color: #ff4f05;
+   }
+   .button.disabled {
+      opacity: 0.5;}
+      .button.disabled:hover{
+        background-color: var(--orange);}
+
+
+.bt-stepper {
+  /* width: 500px */
+}
+  .bt-stepper .steper-progress-bar {
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    margin-bottom: 3.5em;}
+
+    .steper-progress-bar .stepper-circle {
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -ms-flex-line-pack: center;
+      align-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      width: 2em;
+      height: 2em;
+      padding: 0.5em 0;
+      margin: 0.25rem;
+      line-height: 1em;
+      color: #fff;
+      background-color: #6c757d;
+      border-radius: 1em;}
+      .active .stepper-circle {
+        background-color: #007bff;}
+      .done .stepper-circle {
+        background-color: #007bff;
+      }
+
+    .steper-progress-bar .stepper-label{
+      display: inline-block;
+      margin: 0.25rem;
+    }
+    .step-trigger {
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      padding: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #6c757d;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-direction: column;
+      vertical-align: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      background-color: transparent;
+      border: none;
+      border-radius: 0.25rem;
+      transition: background-color .15s ease-out,color .15s ease-out;
+    }
+    .stepper-pan {
+      display: none;
+      visibility: hidden;}
+      .stepper-pan.show {
+      display: block;
+      visibility: visible;}
+    /* .bt-stepper .steper-progress-bar  li.progress-bar__dot {
+      display: block;
+      width: 1em;
+      border-radius: 1000em;
+      height: 1em;
+      border: 0.2em solid var(--orange);
+      background-color: white;
+      cursor:pointer;
+      transition: all .5s ease;}
+
+    .bt-stepper .steper-progress-bar  li.progress-bar__dot.full{
+      background-color: var(--orange);} */
+
+    .bt-stepper .steper-progress-bar  li.progress-bar__connector {
+      display: block;
+      flex: 1 0 32px;
+      min-width: 3px;
+      height: 1px;
+      background-color: #0000001f;
+      border-radius: 1000em;
+      margin-top: 30px;}
+
+  .bt-stepper .button-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top:50px;}
+   
+  .bt-stepper button#validate {
+    margin:auto;
+    background-color: var(--green);
+    width:12em;}
+
+  .bt-stepper button#validate:hover {
+          background-color: #12684e;}
