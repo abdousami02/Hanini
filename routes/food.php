@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Food\DashboardController;
 use App\Http\Controllers\Food\OrderController;
+use App\Http\Controllers\Food\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,10 @@ Route::group(['prefix' => 'food','middleware' => 'auth.food'],function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('food.dashboard');
 
     Route::get('/orders', [OrderController::class, 'index'])->name('food.orders');
+
+    Route::get('/products', [ProductController::class, 'index'])->name('food.products');
+    Route::get('/product/add', [ProductController::class, 'create'])->name('food.product.add');
+
 
     
         // //notification

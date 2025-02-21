@@ -18,6 +18,13 @@
           <span class="menu-title">Commandes</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('food.products')}}">
+          <i class="mdi mdi-basket menu-icon"></i>
+          {{-- <img src="{{ static_asset("images/home2.png") }}" class="menu-image" alt=""> --}}
+          <span class="menu-title">Les Plates</span>
+        </a>
+      </li>
       {{-- @can('list concour')
       <li class="nav-item @yield('nav-projects')">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

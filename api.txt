@@ -1,0 +1,42 @@
+
+-error code :
+200 : success
+400	: Not Acceptable
+404 : url Not Found,
+
+- hashing:
+urlencode
+base64_encode
+
+
+
+* Get Menu
+	url:    "/api/food/get-day-menu"
+	method: "POST"
+	response: {
+        "success": {
+            "id": 44,
+            "image": "http://hanini-food.com/image/menu.jpg" // urlencode(),
+            "name": "Fool",
+            "description": "sum desc"   // base64_encode()
+        }
+    }   
+code: 200
+
+
+* Send Order
+	url:    "/api/food/send-order"
+	method: "POST"
+	request : {
+		    'product_id' => 'required|integer',
+            'qte'        => 'required|integer|min:1|max:99',
+            'name'       => 'required|max:50|regex:/^[a-zA-Z\s]*$/',
+            'mobile'     => 'requiredregex:/^(07|06|05)\d{8}$/',
+            'state'      => 'required|integer|max:58',
+            'address'    => 'required|string',
+            'location'   => 'nullable'
+	}
+	response: {
+        "success": "success store order"
+    }   
+code: 200
