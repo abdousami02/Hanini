@@ -20,7 +20,7 @@
 
     <!-- vanilla clendar -->
     {{-- <link href="https://cdn.jsdelivr.net/npm/vanilla-calendar-pro/build/vanilla-calendar.min.css" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="{{ static_asset('css/vanilla-calendar.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ static_asset('css/vanilla-calendar.min.css') }}"> --}}
 
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="shortcut icon" href="/assets/images/favicon.ico" />
@@ -92,16 +92,18 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <script src="{{ static_asset('js/helper.js') }}"></script>
     <script src="/assets/vendors/js/vendor.bundle.base.js"></script>
     <script src="/assets/vendors/select2/select2.min.js"></script>
     <script src="/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
     <script src="/assets/js/off-canvas.js"></script>
     <script src="/assets/js/hoverable-collapse.js"></script>
     <script src="/assets/js/misc.js"></script>
-    <script src="/assets/js/file-upload.js"></script>
     <script src="/assets/js/typeahead.js"></script>
     <script src="/assets/js/select2.js"></script>
+
+    <script src="/assets/js/file-upload.js"></script>
+    <script src="{{ static_asset('js/helper.js') }}"></script>
+
     {{-- <script src="https://cdn.jsdelivr.net/npm/resumablejs@1.1.0/resumable.min.js"></script> --}}
     <script src="{{ static_asset('js/resumable.min.js') }}"></script>
     
@@ -115,7 +117,7 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/vanilla-calendar-pro/build/vanilla-calendar.min.js" defer></script> --}}
     <script src="{{ static_asset('js/vanilla-calendar.min.js') }}"></script>
 
-    <script src="{{ static_asset('js/sweetalert211.min.js') }}"></script>
+    {{-- <script src="{{ static_asset('js/sweetalert211.min.js') }}"></script> --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
     <script src="{{ static_asset('js/main.js') }}"></script>

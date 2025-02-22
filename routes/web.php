@@ -25,12 +25,12 @@ Route::middleware('guest')->group(function (){
     Route::get('food/login', [FoodAuthController::class, 'index'])->name('food.login');
     Route::post('food/login-check', [FoodAuthController::class, 'login'])->name('food.login.check');
 
-
 });
 
 Route::middleware('auth')->group(function(){
     Route::get('logout', [FoodAuthController::class, 'logout'])->name('logout');
 });
+
 
 // Route::group(['prefix' => 'food'],function(){
 

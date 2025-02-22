@@ -45,9 +45,9 @@
 
 
 @push('script')
-<script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js"></script>
+{{-- <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-messaging-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-database-compat.js"></script> --}}
 
 {{-- <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-auth-compat.js"></script> --}}

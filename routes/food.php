@@ -1,10 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Food\DashboardController;
+use App\Http\Controllers\Food\MediaController;
 use App\Http\Controllers\Food\OrderController;
 use App\Http\Controllers\Food\ProductController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Food\DashboardController;
+use App\Http\Controllers\Food\SellerController;
+use App\Http\Controllers\Food\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +25,13 @@ Route::group(['prefix' => 'food','middleware' => 'auth.food'],function(){
     Route::get('/orders', [OrderController::class, 'index'])->name('food.orders');
 
     Route::get('/products', [ProductController::class, 'index'])->name('food.products');
-    Route::get('/product/add', [ProductController::class, 'create'])->name('food.product.add');
+    Route::get('/product/add', [ProductController::class, 'add'])->name('food.product.add');
+    Route::post('/product/store', [ProductController::class, 'store'])->name('food.product.store');
+
+    Route::post('/upload-file', [MediaController::class, 'uploadEditor'])->name('editor.upload');
+
+    Route::get('/users', [UserController::class, 'index'])->name('food.users');
+    Route::get('/sellers', [SellerController::class, 'index'])->name('food.sellers');
 
 
     

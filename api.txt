@@ -40,3 +40,21 @@ code: 200
         "success": "success store order"
     }   
 code: 200
+
+
+* List Old Order
+	url:    "/api/food/orders-list"
+	method: "POST"
+	request : {
+		    'product_id' => 'required|integer',
+            'qte'        => 'required|integer|min:1|max:99',
+            'name'       => 'required|max:50|regex:/^[a-zA-Z\s]*$/',
+            'mobile'     => 'requiredregex:/^(07|06|05)\d{8}$/',
+            'state'      => 'required|integer|max:58',
+            'address'    => 'required|string',
+            'location'   => 'nullable'
+	}
+	response: {
+        "success": "success store order"
+    }   
+code: 200

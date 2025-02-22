@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ static_asset('css/custome.css') }}">
 
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="/assets/images/favicon.png" />
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
   </head>
   <body>
     <div class="container-scroller">
@@ -25,7 +25,7 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo">
-                  <img src="{{ static_asset('images/logo.png') }}">
+                  <img src="{{ static_asset('images/logo-h.png') }}">
                 </div>
                 <h4>Bonjour! Commençons</h4>
                 {{-- <h6 class="font-weight-light">Sign in to continue.</h6> --}}

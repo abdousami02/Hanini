@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
-      <a class="sidebar-brand brand-logo" href="{{ url('/') }}"><img src="{{ static_asset('images/logo.png') }}" alt="logo" /></a>
-      <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="{{ url('/') }}"><img src="{{ static_asset('images/logo-mini.png') }}" alt="logo" /></a>
+      <a class="sidebar-brand brand-logo" href="{{ url('/') }}"><img src="{{ static_asset('images/logo-h.png') }}" alt="logo" /></a>
+      <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="{{ url('/') }}"><img src="{{ static_asset('images/logo.png') }}" alt="logo" /></a>
     </div>
     <ul class="nav mt-4">
       <li class="nav-item">
@@ -23,6 +23,22 @@
           <i class="mdi mdi-basket menu-icon"></i>
           {{-- <img src="{{ static_asset("images/home2.png") }}" class="menu-image" alt=""> --}}
           <span class="menu-title">Les Plates</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('food.sellers')}}">
+          <i class="mdi mdi-store menu-icon"></i>
+          {{-- <img src="{{ static_asset("images/home2.png") }}" class="menu-image" alt=""> --}}
+          <span class="menu-title">Fourniseurs</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('food.users')}}">
+          <i class="mdi mdi-account-multiple menu-icon"></i>
+          {{-- <img src="{{ static_asset("images/home2.png") }}" class="menu-image" alt=""> --}}
+          <span class="menu-title">Utilisateurs</span>
         </a>
       </li>
       {{-- @can('list concour')

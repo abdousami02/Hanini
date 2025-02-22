@@ -507,10 +507,12 @@ textarea.msg-text {
   width: 35px;
 }
 .sidebar .sidebar-brand-wrapper .brand-logo img {
-  width: 180px;
+  width: auto;
+  height: 80px;
 }
 .auth .brand-logo img {
-  width: 235px;
+  width: auto;
+  height: 85px;
 }
 .auth .brand-logo {
   margin-bottom: 1rem;

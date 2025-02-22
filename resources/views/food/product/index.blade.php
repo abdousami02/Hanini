@@ -41,29 +41,38 @@
                 <thead>
                     <tr>
                     <th style="width: 50px">#</th>
+                    <th>Image</th>
                     <th>Nom</th>
+                    <th>Description</th>
                     <th>Prix</th>
-                    <th>Informations</th>
                     <th>Statut</th>
-                    <th>Comments</th>
+                    <th>mettre ce plat du jour</th>
                     <th style="width: 110px">Options</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($products ?? [] as $elem)
                     <tr>
-                        <td>1</td>
-                        <td>Plate de Riz</td>
-                        <td>6500 DA</td>
+                        <td>{{ $elem->id }}</td>
+                        <th>
+                            <img src="{{ getImage($elem->imageProduct()) }}" alt="" style="width: 120px;height:auto;">
+                        </th>
+                        <td>{{ $elem->name }}</td>
                         <td></td>
+                        <td>{{ $elem->price }} DA</td>
                         <td>
-                            <div class="badge badge-success">Payé</div>
+                            @if($elem->is_active)
+                                <div class="badge badge-success">Active</div>
+                            @else
+                                <div class="badge badge-warning">Inactive</div>
+                            @endif
                         </td>
+                        <td></td>
                         {{-- <td>
                             <span data-toggle="tooltip" data-original-title="23 November, 2024 06:56:57 PM">
                                 23 Nov, 24
                             </span>
                         </td> --}}
-                        <td></td>
                         <td>
                             <a href="#" class="btn btn-outline-info btn-sm btn-circle" data-url="" data-toggle="tooltip" title="" data-original-title="Voir" aria-describedby="tooltip373621">
                                 <i class="mdi mdi-eye"></i>
@@ -81,6 +90,7 @@
                             </div>
                         </td>
                     </tr>
+                    @endforeach
 
                 </tbody>
             </table>
