@@ -117,7 +117,7 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/vanilla-calendar-pro/build/vanilla-calendar.min.js" defer></script> --}}
     <script src="{{ static_asset('js/vanilla-calendar.min.js') }}"></script>
 
-    {{-- <script src="{{ static_asset('js/sweetalert211.min.js') }}"></script> --}}
+    <script src="{{ static_asset('js/sweetalert211.min.js') }}"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
     <script src="{{ static_asset('js/main.js') }}"></script>

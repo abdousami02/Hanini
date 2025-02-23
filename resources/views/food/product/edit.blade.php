@@ -26,7 +26,7 @@
             </div>
           @endif
 
-            <form action="{{ route('food.product.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('food.product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -63,16 +63,16 @@
                         <div class="form-group">
                             <label>Maximum de commandes par jour</label>
                             <div class="input-group mb-3">
-                                <input type="number" name="per_day" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
+                                <input type="number" name="per_day" class="form-control @error('per_day') is-invalid @enderror" value="{{ old('per_day') ?? $product->per_day }}">
                                 <div class="input-group-append">
                                   <span class="input-group-text">/ jour</span>
                                 </div>
                               </div>
                         </div>
-                        <div class="for-group">
+                        {{-- <div class="for-group">
                             <label for="set_active" class="form-check-label">Mettre ce plat du jour</label>
-                            <input type="checkbox" name="is_active" class="orm-check-input" id="set_active" value="1">
-                        </div>
+                            <input type="checkbox" name="is_active" class="orm-check-input" id="set_active" @checked($product->is_active == 1) value="1">
+                        </div> --}}
                         {{-- <div class="form-group">
                             <label for=""></label>
                         </div> --}}
@@ -91,7 +91,7 @@
                     <div class="col-md-6">
                         {{-- Image --}}
                         <div class="mb-3">
-                            <div class="image-prev" style="max-width:320px"><img src="" class="w-100"></div>
+                            <div class="image-prev" style="max-width:320px"><img src="{{ getImage($product->imageProduct()) }}" class="w-100"></div>
                             <label class="input-meida-upload upload-named">{{ __("uploade image") }}
                                 <i class="mdi mdi-cloud-upload icon"></i>
                                 <input type="file" name="image" class="form-control d-none" accept="image/*">
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class="btns d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary mx-2">Ajouter</button>
+                    <button type="submit" class="btn btn-primary mx-2">Modifier</button>
                     <a href="{{ route('food.products') }}" class="btn btn-danger">Annuler</a>
                 </div>
             </form>
@@ -125,5 +125,6 @@
             'X-CSRF-Token': "{{ csrf_token() }}"
      }
   });
+
 </script>
 @endpush

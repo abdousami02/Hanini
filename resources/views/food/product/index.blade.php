@@ -52,7 +52,7 @@
                 </thead>
                 <tbody>
                     @foreach($products ?? [] as $elem)
-                    <tr>
+                    <tr data-id="{{ $elem->id }}">
                         <td>{{ $elem->id }}</td>
                         <th>
                             <img src="{{ getImage($elem->imageProduct()) }}" alt="" style="width: 120px;height:auto;">
@@ -91,7 +91,7 @@
                             <a href="{{ route('food.product.edit', $elem->id) }}" class="btn btn-outline-info btn-sm btn-circle" data-url="" data-toggle="tooltip" title="" data-original-title="Voir" aria-describedby="tooltip373621">
                                 <i class="mdi mdi-pencil"></i>
                             </a>
-                            <a href="#" class="btn btn-outline-danger btn-sm btn-circle" data-url="" data-toggle="tooltip" title="" data-original-title="Voir" aria-describedby="tooltip373621">
+                            <a href="#" class="btn btn-outline-danger btn-sm btn-circle delete-product" data-url="" data-toggle="tooltip" title="" data-original-title="Voir" aria-describedby="tooltip373621">
                                 <i class="mdi mdi-delete"></i>
                             </a>
 
@@ -120,4 +120,49 @@
 
 </div>
 @endsection
+
+@push('script')
+<script>
+
+(function($){
+
+    $('.delete-product').click(e=>{deleteProduct(e)});
+
+    function deleteProduct(e){
+        e.preventDefault();
+        let element = $(e.target).parents('tr[data-id]');
+        let id = element.data('id');
+        Swal.fire({
+            title: "Etes-vous sûr de supprimer ce produit?",
+            // text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Oui, supprimer-le !",
+            cancelButtonText: "Annuler",
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    let url = '{{ route("food.product.destroy") }}';
+                    $.post(url,{id}).done(function(response){
+                        if(response.success){
+                            element.remove();
+                            toastr.success(response.success)
+                        }else{
+                            toastr.error(response.error)
+                        }
+
+                    }).fail(function(resp){
+                        toastr.error(resp.responseJSON.message);
+                    })
+
+                    // deleteAction(element, project_id);
+                }
+            });
+    }
+
+})(jQuery)
+</script>
+@endpush
 

@@ -38,6 +38,7 @@ class FoodApiController extends Controller
 
     public function sendOrder(SendOrderRequest $request)
     {
+        
         return response()->json(['success' => 'success store order']);
     }
 
@@ -46,11 +47,21 @@ class FoodApiController extends Controller
         $data = [
             [
                 'id' => 3,
-                'image' => 'http%3A%2F%2Fhanini_local%2Fstorage%2Fimages%2Fproduct_67b9e3b3dc9c71740235699.webp',
+                'image' => urlencode(url('/storage/images/borak.jpg')),
                 'name' => 'Plate bourak',
                 'date' => '2025-02-23T11:33:51Z',
-                'status' => 'on_process|on_delivery|delivered|cancelled',
-                'status_text' => 'en coure|en livraison|livrée|annulée',
+                'status' => 'on_process',
+                'status_text' => 'en coure',
+                'price' => '1254',
+                'currency' => 'DA',
+            ],
+            [
+                'id' => 3,
+                'image' => urlencode(url('/storage/images/borak.jpg')),
+                'name' => 'Plate methoem',
+                'date' => '2025-02-23T11:33:51Z',
+                'status' => 'on_delivery',
+                'status_text' => 'en livraison',
                 'price' => '1254',
                 'currency' => 'DA',
             ]

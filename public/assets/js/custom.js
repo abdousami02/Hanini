@@ -78,7 +78,11 @@ jQuery(function($){
         }
 
         $.post(url, formData).done(function(response){
-            toastr[response.status](response.message)
+            if(response.success){
+                toastr.success(response.success)
+            }else{
+                toastr.error(response.error)
+            }
         }).fail(function(e){
             toastr.error(e);
         })

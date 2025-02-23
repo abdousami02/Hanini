@@ -12,6 +12,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Food\ProductChangeStatusRequest;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Requests\Food\StoreProductRequest;
+use App\Http\Requests\Food\UpdateProductRequest;
+use PhpParser\Node\Expr\FuncCall;
 
 class ProductController extends Controller
 {
@@ -63,7 +65,7 @@ class ProductController extends Controller
                 'description'   => base64_encode($request->description),
                 'image'         => $media_id ?? null,
                 'price'         => $request->price,
-                'is_active'     => $request->is_active,
+                'is_active'     => $request->is_active ?? 0,
                 'per_day'       => $request->per_day ?? null,
             ]);
 
@@ -76,8 +78,45 @@ class ProductController extends Controller
             Log::info($e);
             Toastr::error($e->getMessage());
             return back();
-        }
-        
+        }   
+    }
+
+    public function update($id, UpdateProductRequest $request)
+    {
+        $request->flash();
+        DB::beginTransaction();
+        try{
+            $product = Product::findOrFail($id);
+
+            if($request->hasFile('image')){
+                $media = $this->putImage($request->file('image'), '_image_');
+                if(isset($media->original_file) && $media->original_file != ''){
+                    $media_id = $media->id;
+                }
+            }else{
+                $media_id = $product->image;
+            }
+    
+            $product->update([
+                'seller_id'     => $request->seller_id,
+                'name'          => $request->name,
+                'description'   => base64_encode($request->description),
+                'image'         => $media_id ?? null,
+                'price'         => $request->price,
+                // 'is_active'     => $request->is_active,
+                'per_day'       => $request->per_day ?? null,
+            ]);
+
+            DB::commit();
+            Toastr::success(__('success ajouter plate'));
+            return redirect()->route('food.products');
+
+        }catch(\Exception $e){
+            DB::rollBack();
+            Log::info($e);
+            Toastr::error($e->getMessage());
+            return back();
+        }   
     }
 
     public function changeStatus(ProductChangeStatusRequest $request)
@@ -98,11 +137,29 @@ class ProductController extends Controller
                     'is_active' => $request->status,
                 ]);
                 DB::commit();
-                return response()->json(['status' => 'success', 'message' => __("change statut avec success")]);
+                return response()->json(['success' => __("change statut avec succès")]);
             }
             DB::commit();
-            return response()->json(['status' => 'success', 'message' => __("not change")]);
+            return response()->json(['success' => __("not change")]);
 
+
+        }catch(\Exception $e){
+            DB::rollBack();
+            Log::info($e);
+            Toastr::error($e->getMessage());
+            return response()->json(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        DB::beginTransaction();
+        try{
+            $product = Product::findOrFail($request->id);
+            $product->delete();
+
+            DB::commit();
+            return response()->json(['success' =>  __("supprimer avec succès")]);
 
         }catch(\Exception $e){
             DB::rollBack();

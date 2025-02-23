@@ -29,6 +29,7 @@ Route::group(['prefix' => 'food','middleware' => 'auth.food'],function(){
     Route::post('/product/store', [ProductController::class, 'store'])->name('food.product.store');
     Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('food.product.edit');
     Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('food.product.update');
+    Route::post('/product/destroy', [ProductController::class, 'destroy'])->name('food.product.destroy');
 
 
     Route::post('/upload-file', [MediaController::class, 'uploadEditor'])->name('editor.upload');
