@@ -27,14 +27,15 @@ Route::group(['prefix' => 'food','middleware' => 'auth.food'],function(){
     Route::get('/products', [ProductController::class, 'index'])->name('food.products');
     Route::get('/product/add', [ProductController::class, 'add'])->name('food.product.add');
     Route::post('/product/store', [ProductController::class, 'store'])->name('food.product.store');
+    Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('food.product.edit');
+    Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('food.product.update');
+
 
     Route::post('/upload-file', [MediaController::class, 'uploadEditor'])->name('editor.upload');
 
     Route::get('/users', [UserController::class, 'index'])->name('food.users');
     Route::get('/sellers', [SellerController::class, 'index'])->name('food.sellers');
 
-
-    
         // //notification
         // Route::group(['prefix' => 'notification'], function () {
         //     Route::get('/all', [NotificationController::class, 'index'])->name('notification.all');
@@ -44,6 +45,9 @@ Route::group(['prefix' => 'food','middleware' => 'auth.food'],function(){
         //     Route::post('/delete', [NotificationController::class, 'destroy'])->name('notification.destroy');
         // });
 });
+
+Route::post('/food-product-status-change', [ProductController::class, 'changeStatus'])->name('food.product.change-status');
+
 
 
 

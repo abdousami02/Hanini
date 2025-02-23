@@ -41,12 +41,12 @@
                 <thead>
                     <tr>
                     <th style="width: 50px">#</th>
-                    <th>Image</th>
+                    <th style="width: 120px">Image</th>
                     <th>Nom</th>
                     <th>Description</th>
                     <th>Prix</th>
-                    <th>Statut</th>
-                    <th>mettre ce plat du jour</th>
+                    <th>commande max</th>
+                    <th>Plat du jour</th>
                     <th style="width: 110px">Options</th>
                     </tr>
                 </thead>
@@ -61,33 +61,53 @@
                         <td></td>
                         <td>{{ $elem->price }} DA</td>
                         <td>
+                            @if($elem->per_day)
+                            {{ $elem->per_day }} / jour
+                            @else
+                                Illimité
+                            @endif
+                        </td>
+                        {{-- <td>
                             @if($elem->is_active)
                                 <div class="badge badge-success">Active</div>
                             @else
                                 <div class="badge badge-warning">Inactive</div>
                             @endif
+                        </td> --}}
+                        <td>
+                            <label class="custom-switch">
+                                {{-- <input type="checkbox" name="" value="food-product-status-change/{{$elem->id}}/status" class="product-status-change custom-switch-input"> --}}
+
+                                <input type="checkbox" name="" @checked($elem->is_active == 1) value="food-product-status-change/{{$elem->id}}/ofday" class="product-set-day custom-switch-input">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
                         </td>
-                        <td></td>
                         {{-- <td>
                             <span data-toggle="tooltip" data-original-title="23 November, 2024 06:56:57 PM">
                                 23 Nov, 24
                             </span>
                         </td> --}}
                         <td>
-                            <a href="#" class="btn btn-outline-info btn-sm btn-circle" data-url="" data-toggle="tooltip" title="" data-original-title="Voir" aria-describedby="tooltip373621">
-                                <i class="mdi mdi-eye"></i>
+                            <a href="{{ route('food.product.edit', $elem->id) }}" class="btn btn-outline-info btn-sm btn-circle" data-url="" data-toggle="tooltip" title="" data-original-title="Voir" aria-describedby="tooltip373621">
+                                <i class="mdi mdi-pencil"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-danger btn-sm btn-circle" data-url="" data-toggle="tooltip" title="" data-original-title="Voir" aria-describedby="tooltip373621">
+                                <i class="mdi mdi-delete"></i>
                             </a>
 
-                            <div class="dropdown">
+                            {{-- <div class="dropdown">
                               <button type="button" class="btn btn-light btn-option" data-toggle="dropdown" aria-expanded="false">
                                   <i class="mdi mdi-dots-vertical"></i>
                               </button>
+                              <button type="button" class="btn btn-light btn-option" data-toggle="dropdown" aria-expanded="false">
+                                <i class="mdi mdi-dots-vertical"></i>
+                            </button>
                               <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href=""><i class="icon mdi mdi-pencil"></i> {{ __("Modifier") }}</a></li>
                                     <li><a class="dropdown-item delete-project" href="#"><i class="icon mdi mdi-delete"></i> {{ __("Supprimer") }}</a></li>
                                     <li><a class="dropdown-item archive-project" href="#"><i class="icon mdi mdi-archive"></i> {{ __("Archive") }}</a></li>
                               </ul>
-                            </div>
+                            </div> --}}
                         </td>
                     </tr>
                     @endforeach

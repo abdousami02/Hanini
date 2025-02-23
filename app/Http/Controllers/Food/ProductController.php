@@ -9,6 +9,7 @@ use App\Models\SellerProfile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Food\ProductChangeStatusRequest;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Requests\Food\StoreProductRequest;
 
@@ -26,6 +27,22 @@ class ProductController extends Controller
     {
         $sellers = SellerProfile::get();
         return view('food.product.add',compact('sellers'));
+    }
+
+    public function edit($id, Request $request)
+    {
+        try{
+            $sellers = SellerProfile::get();
+            $product = Product::findOrFail($id);
+            return view('food.product.edit',compact('sellers', 'product'));
+
+        }catch(\Exception $e){
+            DB::rollBack();
+            Log::info($e);
+            Toastr::error($e->getMessage());
+            return back();
+        }
+        
     }
 
     public function store(StoreProductRequest $request)
@@ -61,5 +78,37 @@ class ProductController extends Controller
             return back();
         }
         
+    }
+
+    public function changeStatus(ProductChangeStatusRequest $request)
+    {
+        DB::beginTransaction();
+        try{
+            // dd($request);
+            $product = Product::findOrFail($request->id);
+            if($request->change_for == 'ofday' && $request->status == 1){
+                $other = Product::where('id', '!=', $product->id)->get();
+                foreach($other ?? [] as $elem){
+                    // dd($elem);
+                    $elem->update([
+                        'is_active' => 0,
+                    ]);
+                }
+                $product->update([
+                    'is_active' => $request->status,
+                ]);
+                DB::commit();
+                return response()->json(['status' => 'success', 'message' => __("change statut avec success")]);
+            }
+            DB::commit();
+            return response()->json(['status' => 'success', 'message' => __("not change")]);
+
+
+        }catch(\Exception $e){
+            DB::rollBack();
+            Log::info($e);
+            Toastr::error($e->getMessage());
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 }

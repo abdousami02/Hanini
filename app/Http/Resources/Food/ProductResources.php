@@ -16,8 +16,10 @@ class ProductResources extends JsonResource
     {
         return [
             'id'    => (int) $this->id,
-            'image' => $this->image,
+            'image' => getEncodeImage($this->imageProduct()),
             'name'  => $this->name,
+            'price' => (int) $this->price,
+            'currency' => 'DA',
             'description' => $this->description,
         ];
     }

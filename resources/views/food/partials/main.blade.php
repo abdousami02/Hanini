@@ -121,6 +121,7 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
     <script src="{{ static_asset('js/main.js') }}"></script>
+    <script src="{{ static_asset('js/custom.js') }}"></script>
 
     <!-- init post ajax -->
     <script>

@@ -18,6 +18,8 @@ base64_encode
             "id": 44,
             "image": "http://hanini-food.com/image/menu.jpg" // urlencode(),
             "name": "Fool",
+            "price": 1234,
+            "currency": "DA",
             "description": "sum desc"   // base64_encode()
         }
     }   
@@ -43,18 +45,39 @@ code: 200
 
 
 * List Old Order
-	url:    "/api/food/orders-list"
-	method: "POST"
-	request : {
-		    'product_id' => 'required|integer',
-            'qte'        => 'required|integer|min:1|max:99',
-            'name'       => 'required|max:50|regex:/^[a-zA-Z\s]*$/',
-            'mobile'     => 'requiredregex:/^(07|06|05)\d{8}$/',
-            'state'      => 'required|integer|max:58',
-            'address'    => 'required|string',
-            'location'   => 'nullable'
-	}
+	url:    "/api/food/get-all-orders"
+	method: "GET"
 	response: {
-        "success": "success store order"
+        "success": [
+            {
+                "id": 3,
+                "image": "http%3A%2F%2Fhanini_local%2Fstorage%2Fimages%2Fproduct_67b9e3b3dc9c71740235699.webp",
+                "name": "Plate bourak",
+                "date": "2025-02-23T11:33:51Z",
+                "status": "on_process|on_delivery|delivered|cancelled",
+                "status_text": "en coure|en livraison|livr\u00e9e|annul\u00e9e",
+                "price": "1254",
+                "currency": "DA"
+            }
+        ]
     }   
 code: 200
+
+
+* List Willaya 
+	url:    "/api/food/state-support"
+	method: "GET"
+    response: {
+        "success": [
+            {
+                "number": 35,
+                "name": "boumerdes"
+            },
+            {
+                "number": 16,
+                "name": "alger"
+            }
+        ]
+    }
+code: 200
+            

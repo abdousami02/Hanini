@@ -49,9 +49,20 @@ if (!function_exists('getImage')) {
     function getImage($image)
     {
         if($image){
-            return '/storage/images/'.$image;
+            return url('/').'/storage/images/'.$image;
         }else{
-            return '/assets/images/icon/document-light.png';
+            return url('/').'/assets/images/icon/document-light.png';
+        }
+    }
+}
+if (!function_exists('getEncodeImage')) {
+
+    function getEncodeImage($image)
+    {
+        if($image){
+            return urlencode(url('/storage/images/'.$image));
+        }else{
+            return urlencode(url('/assets/images/icon/document-light.png'));
         }
     }
 }

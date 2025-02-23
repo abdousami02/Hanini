@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['seller_id', 'name', 'description', 'image', 'price', 'is_acrive', 'per_day'];
+    protected $fillable = ['seller_id', 'name', 'description', 'image', 'price', 'is_active', 'per_day'];
 
 
     public function getMedia(){
