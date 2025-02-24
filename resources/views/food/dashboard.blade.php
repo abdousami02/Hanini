@@ -13,7 +13,7 @@
       </nav>
     </div>
     <div class="row mb-3">
-        <div class="col-lg-3 col-6 mb-2">
+        <div class="col-lg-3 col-md-6 col-12 mb-2">
             <div class="card bg-info-light">
                 <div class="card-body px-3 py-4">
                   <div class="d-flex justify-content-between align-items-start">
@@ -21,12 +21,12 @@
                       <p class="mb-0 color-card-head">Commandes</p>
                       <h2 class="">{{ $count_order }}</h2>
                     </div>
-                    <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-info"></i>
+                    <i class="card-icon-indicator mdi mdi-trending-up bg-inverse-icon-info"></i>
                   </div>
                 </div>
               </div>
         </div>
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-3 col-md-6 col-12 mb-2">
           <div class="card bg-success-light">
               <div class="card-body px-3 py-4">
                 <div class="d-flex justify-content-between align-items-start">
@@ -34,12 +34,12 @@
                     <p class="mb-0 color-card-head">Plates</p>
                     <h2 class="">{{ $count_product }}</h2>
                   </div>
-                  <i class="card-icon-indicator mdi mdi-file-multiple bg-inverse-icon-info"></i>
+                  <i class="card-icon-indicator mdi mdi-basket menu-icon bg-inverse-icon-info"></i>
                 </div>
               </div>
             </div>
       </div>
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-3 col-md-6 col-12 mb-2">
             <div class="card bg-success-light">
                 <div class="card-body px-3 py-4">
                   <div class="d-flex justify-content-between align-items-start">
@@ -47,13 +47,13 @@
                       <p class="mb-0 color-card-head">Ventes</p>
                       <h2 class="">{{ $count_delivred }}</h2>
                     </div>
-                    <i class="card-icon-indicator mdi mdi-pin bg-inverse-icon-info"></i>
+                    <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-info"></i>
                   </div>
                 </div>
               </div>
         </div>
         
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-3 col-md-6 col-12 mb-2">
             <div class="card bg-warning-light">
                 <div class="card-body px-3 py-4">
                   <div class="d-flex justify-content-between align-items-start">
@@ -61,7 +61,7 @@
                       <p class="mb-0 color-card-head">Commandes en cours d'exécution </p>
                       <h2 class=""> {{ $count_on_delivery }}</h2>
                     </div>
-                    <i class="card-icon-indicator mdi mdi-account bg-inverse-icon-info"></i>
+                    <i class="card-icon-indicator mdi mdi-autorenew bg-inverse-icon-info"></i>
                   </div>
                 </div>
               </div>

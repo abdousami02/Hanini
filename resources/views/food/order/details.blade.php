@@ -18,9 +18,9 @@ $address = (object) $order->shipping_address;
 
     <div class="card">
         <div class="card-body">
-            <a href="{{ route('food.orders') }}" class="btn btn-primary"><i class="mdi mdi-arrow-left"></i> Retour</a>
+            <a href="{{ route('food.orders') }}" class="btn btn-primary  mb-2"><i class="mdi mdi-arrow-left"></i> Retour</a>
           <div class="row justify-content-end">
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6 mb-2">
                 {{-- <div class="form-group">
                 </div> --}}
                 
@@ -35,7 +35,7 @@ $address = (object) $order->shipping_address;
                 </form>
             </div>
             
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6 mb-2">
 
                 <form action="{{ route('food.order.change.status') }}" method="POST">
                     @csrf
