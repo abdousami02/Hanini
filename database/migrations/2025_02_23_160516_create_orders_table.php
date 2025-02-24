@@ -30,11 +30,11 @@ return new class extends Migration
             $table->double('shipping_cost',10,3)->default(0.00);
             $table->double('total_payable',20,3)->default(0.00);
             $table->timestamp('date')->nullable();
-            $table->string('trx_id');
             $table->tinyInteger('viewed')->default(0);
             $table->boolean('is_mailed')->default(false);
             $table->string('shipping_method')->nullable();
             
+            // $table->string('trx_id');
             // $table->string('tax_method')->default('{"vat_tax_type" : "","tax_type" : "" }')
             // $table->tinyInteger('delivery_viewed')->default(0);
             // $table->tinyInteger('payment_status_viewed')->default(0);
@@ -51,6 +51,7 @@ return new class extends Migration
             // $table->tinyInteger('cancel_request')->default(0);
             // $table->timestamp('cancel_request_at')->nullable();
             // $table->timestamp('delivery_hero_assign_at')->nullable();
+            $table->timestamps();
         });
     }
 

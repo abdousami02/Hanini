@@ -26,10 +26,9 @@
         </a>
       </li>
 
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('food.sellers')}}">
           <i class="mdi mdi-store menu-icon"></i>
-          {{-- <img src="{{ static_asset("images/home2.png") }}" class="menu-image" alt=""> --}}
           <span class="menu-title">Fourniseurs</span>
         </a>
       </li>
@@ -37,10 +36,10 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('food.users')}}">
           <i class="mdi mdi-account-multiple menu-icon"></i>
-          {{-- <img src="{{ static_asset("images/home2.png") }}" class="menu-image" alt=""> --}}
           <span class="menu-title">Utilisateurs</span>
         </a>
-      </li>
+      </li> --}}
+
       {{-- @can('list concour')
       <li class="nav-item @yield('nav-projects')">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

@@ -27,10 +27,10 @@ class Order extends Model
         'total_payable',
         'date',
         'viewed',
-        'trx_id',
         'is_mailed',
         'shipping_method',
-
+        
+        // 'trx_id',
         // 'tax_method',
         // 'delivery_viewed',
         // 'payment_status_viewed',
@@ -58,9 +58,16 @@ class Order extends Model
         // 'payment_recieved_at',
         // 'payment_recieved_by'
     ];
+    protected $casts = [
+        // 'billing_address' => 'array',
+        'shipping_address' => 'array',
+        'payment_details' => 'array',
+        // 'offline_method_file' => 'array',
+        // 'tax_method' => 'array',
+    ];
 
     public function user()
-{
+    {
         return $this->belongsTo(User::class);
     }
 

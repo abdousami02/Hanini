@@ -19,7 +19,7 @@
                   <div class="d-flex justify-content-between align-items-start">
                     <div class="">
                       <p class="mb-0 color-card-head">Commandes</p>
-                      <h2 class="">0</h2>
+                      <h2 class="">{{ $count_order }}</h2>
                     </div>
                     <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-info"></i>
                   </div>
@@ -27,38 +27,39 @@
               </div>
         </div>
         <div class="col-lg-3 col-6">
-            <div class="card bg-info-light">
+          <div class="card bg-success-light">
+              <div class="card-body px-3 py-4">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div class="">
+                    <p class="mb-0 color-card-head">Plates</p>
+                    <h2 class="">{{ $count_product }}</h2>
+                  </div>
+                  <i class="card-icon-indicator mdi mdi-file-multiple bg-inverse-icon-info"></i>
+                </div>
+              </div>
+            </div>
+      </div>
+        <div class="col-lg-3 col-6">
+            <div class="card bg-success-light">
                 <div class="card-body px-3 py-4">
                   <div class="d-flex justify-content-between align-items-start">
                     <div class="">
                       <p class="mb-0 color-card-head">Ventes</p>
-                      <h2 class="">0</h2>
+                      <h2 class="">{{ $count_delivred }}</h2>
                     </div>
                     <i class="card-icon-indicator mdi mdi-pin bg-inverse-icon-info"></i>
                   </div>
                 </div>
               </div>
         </div>
-        <div class="col-lg-3 col-6">
-            <div class="card bg-success-light">
-                <div class="card-body px-3 py-4">
-                  <div class="d-flex justify-content-between align-items-start">
-                    <div class="">
-                      <p class="mb-0 color-card-head">Pièce jointe</p>
-                      <h2 class="">0</h2>
-                    </div>
-                    <i class="card-icon-indicator mdi mdi-file-multiple bg-inverse-icon-info"></i>
-                  </div>
-                </div>
-              </div>
-        </div>
+        
         <div class="col-lg-3 col-6">
             <div class="card bg-warning-light">
                 <div class="card-body px-3 py-4">
                   <div class="d-flex justify-content-between align-items-start">
                     <div class="">
-                      <p class="mb-0 color-card-head">Utilisateurs actifs</p>
-                      <h2 class=""> 4</h2>
+                      <p class="mb-0 color-card-head">Commandes en cours d'exécution </p>
+                      <h2 class=""> {{ $count_on_delivery }}</h2>
                     </div>
                     <i class="card-icon-indicator mdi mdi-account bg-inverse-icon-info"></i>
                   </div>

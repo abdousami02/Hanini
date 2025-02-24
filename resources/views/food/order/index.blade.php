@@ -39,7 +39,7 @@
                     <th>Order Code</th>
                     <th style="width: 25%">Client</th>
                     <th>Prix total</th>
-                    <th>Statu de livraison</th>
+                    <th>Statu</th>
                     <th>Statu de paiment</th>
                     <th>Date de commande</th>
                     <th>Comments</th>
@@ -47,35 +47,71 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>PL-45679</td>
+                    @foreach($orders ?? [] as $key=>$elem)
+                    @php
+                        $address = (object) $elem->shipping_address;
+                        $product = $elem->orderDetails[0]->product;
+                        //on_process|on_delivery|delivered|cancelled
+                    @endphp
+                    <tr data-id="{{ $elem->id }}">
+                        <td>{{ $key+1 }}</td>
+                        <td>PL-{{ $elem->id }}</td>
                         <td>
-                            <div class="ml-1">
-                                abdou <br>
-                                <span style="white-space: nowrap">Phone No: 0588441177 </span><br>
-                                <span style="white-space: nowrap"> Willaya: Chlef - الشلف</span><br>
+                            <div class="ml-1 address-items">
+                                <span>{{ $address->name }} </span>
+                                <span>Phone No: {{ $address->phone_no }} </span>
+                                <span>Willaya: {{ $address->state }}</span>
+                                <span>{{ $address->address }}</span>
                             </div>
                         </td>
-                        <td>6500 DA</td>
+                        <td>{{ $elem->total_amount }} DA</td>
                         <td>
-                            <div class="badge badge-warning">En attente</div>
+                            @switch($elem->status)
+                                @case('on_process')
+                                @case('pending')
+                                    <div class="badge badge-warning">{{ __($elem->status) }}</div>
+                                    @break
+                                @case('on_delivery')
+                                    <div class="badge badge-info">{{ __($elem->status) }}</div>
+                                    @break
+                                @case('delivered')
+                                    <div class="badge badge-success">{{ __($elem->status) }}</div>
+                                    @break
+                                @case('cancelled')
+                                    <div class="badge badge-danger">{{ __($elem->status) }}</div>
+                                    @break
+                                @default
+                                    
+                            @endswitch
+                            {{-- <div class="badge badge-warning">En attente</div> --}}
                         </td>
                         <td>
-                            <div class="badge badge-success">Payé</div>
+                            @if($elem->payment_status == 'unpaid')
+                                <div class="badge badge-warning">Non payé</div>
+                            @else
+                                <div class="badge badge-success">Payé</div>
+                            @endif
                         </td>
                         <td>
-                            <span data-toggle="tooltip" data-original-title="23 November, 2024 06:56:57 PM">
-                                23 Nov, 24
-                            </span>
+                            <span data-toggle="tooltip" data-original-title="{{ showDateTime($elem->date) }}">{{ showDateTime($elem->date) }}</span>
                         </td>
                         <td></td>
                         <td>
-                            <a href="#" class="btn btn-outline-info btn-sm btn-circle" data-url="" data-toggle="tooltip" title="" data-original-title="Voir" aria-describedby="tooltip373621">
+                            <a href="{{ route('food.order.details', $elem->id) }}" class="btn btn-outline-info btn-sm btn-circle" data-url="" data-toggle="tooltip" title="" data-original-title="Voir" aria-describedby="tooltip373621">
                                 <i class="mdi mdi-eye"></i>
                             </a>
+                            <div class="dropdown">
+                              <button type="button" class="btn btn-light btn-option" data-toggle="dropdown" aria-expanded="false">
+                                  <i class="mdi mdi-dots-vertical"></i>
+                              </button>
+                              <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href=""><i class="icon mdi mdi-pencil"></i> {{ __("Modifier") }}</a></li>
+                                    <li><a class="dropdown-item delete-order" href="#"><i class="icon mdi mdi-delete"></i> {{ __("Supprimer") }}</a></li>
+                              </ul>
+                            </div>
                         </td>
                     </tr>
+                    @endforeach
 
                 </tbody>
             </table>
@@ -84,3 +120,49 @@
     </div>
 </div>
 @endsection
+
+
+@push('script')
+<script>
+
+(function($){
+
+    $('.delete-order').click(e=>{deleteOrder(e)});
+
+    function deleteOrder(e){
+        e.preventDefault();
+        let element = $(e.target).parents('tr[data-id]');
+        let id = element.data('id');
+        Swal.fire({
+            title: "Etes-vous sûr de supprimer ce produit?",
+            // text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Oui, supprimer-le !",
+            cancelButtonText: "Annuler",
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    let url = '{{ route("food.order.destroy") }}';
+                    $.post(url,{id}).done(function(response){
+                        if(response.success){
+                            element.remove();
+                            toastr.success(response.success)
+                        }else{
+                            toastr.error(response.error)
+                        }
+
+                    }).fail(function(resp){
+                        toastr.error(resp.responseJSON.message);
+                    })
+
+                    // deleteAction(element, project_id);
+                }
+            });
+    }
+
+})(jQuery)
+</script>
+@endpush

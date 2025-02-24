@@ -34,7 +34,6 @@
                         <div class="form-group">
                             <label for="">Fourniseur</label>
                             <select name="seller_id" id="project-step" class="form-control @error('seller_id') is-invalid @enderror">
-                                <option value="1">Amin food</option>
                                 @foreach($sellers ?? [] as $elem)
                                     <option value="{{ $elem->id }}">{{  $elem->name }}</option>
                                 @endforeach

@@ -87,5 +87,10 @@ jQuery(function($){
             toastr.error(e);
         })
     });
-
 })
+
+$(".onChangeFormSubmit").on("change", function () {
+    console.log($(this).parents('form'));
+    $(this).parents('form').submit();
+    // $("#onChangeFormSubmit").submit();
+});

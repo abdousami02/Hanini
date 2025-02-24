@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seller_profiles', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->string('name');
-            $table->string('email', 100)->nullable();
-            $table->string('mobile', 50)->nullable();
-            $table->string('address');
-            $table->tinyInteger('status')->default(0);
+            $table->string('key');
+            $table->longText('value');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('seller_profiles');
+        Schema::dropIfExists('settings');
     }
 };

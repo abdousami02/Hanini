@@ -22,7 +22,7 @@ class SendOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_id' => 'required|integer',
+            'product_id' => 'required|integer|exists:products,id',
             'qte' => 'required|integer|min:1|max:99',
             'name' => 'required|max:50|regex:/^[a-zA-Z\s]*$/',
             'mobile' => ['required','regex:/^(07|06|05)\d{8}$/'],

@@ -9,7 +9,7 @@ class SellerProfile extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'name', 'address', 'status'];
+    protected $fillable = ['user_id', 'name', 'mobile', 'email', 'address', 'status'];
 
 
     public function user()

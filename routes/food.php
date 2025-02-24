@@ -23,6 +23,11 @@ Route::group(['prefix' => 'food','middleware' => 'auth.food'],function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('food.dashboard');
 
     Route::get('/orders', [OrderController::class, 'index'])->name('food.orders');
+    Route::get('/order-details/{id}', [OrderController::class, 'details'])->name('food.order.details');
+    Route::post('/order/destroy', [OrderController::class, 'destroy'])->name('food.order.destroy');
+
+    Route::post('/order/change-status', [OrderController::class, 'changeStatus'])->name('food.order.change.status');
+
 
     Route::get('/products', [ProductController::class, 'index'])->name('food.products');
     Route::get('/product/add', [ProductController::class, 'add'])->name('food.product.add');

@@ -1,4 +1,11 @@
 {
     "Ajouter Plate": "",
-    "change statut avec success": ""
+    "change statut avec success": "",
+
+    "pending": "En attente",
+    "on_process": "En coure",
+    "on_delivery": "En livraison",
+    "delivered": "Livré",
+    "cancelled": "Annulé"
+
 }

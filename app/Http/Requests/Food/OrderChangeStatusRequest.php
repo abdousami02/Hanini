@@ -4,7 +4,7 @@ namespace App\Http\Requests\Food;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProductRequest extends FormRequest
+class OrderChangeStatusRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,14 +21,10 @@ class StoreProductRequest extends FormRequest
      */
     public function rules(): array
     {
+        //on_process|on_delivery|delivered|cancelled
         return [
-            'seller_id' => 'required|integer|exists:seller_profiles,id',
-            'name'     => 'required|string|max:80',
-            'description'   => 'required',
-            'image'         => 'required',
-            'price'         => 'required|integer',
-            'is_active'     => 'nullable|in:0,1',
-            'per_day'       => 'nullable|integer'
+            'status' => 'nullable|in:on_process,on_delivery,delivered,cancelled',
+            'payment_status' => 'nullable|in:paid,unpaid',
         ];
     }
 }

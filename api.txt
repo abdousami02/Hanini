@@ -55,7 +55,7 @@ code: 200
                 "name": "Plate bourak",
                 "date": "2025-02-23T11:33:51Z",
                 "status": "on_process|on_delivery|delivered|cancelled",
-                "status_text": "en coure|en livraison|livr\u00e9e|annul\u00e9e",
+                "status_text": "en coure|en livraison|livré|annulé",
                 "price": "1254",
                 "currency": "DA"
             }

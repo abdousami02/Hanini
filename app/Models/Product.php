@@ -20,4 +20,9 @@ class Product extends Model
     {
         return $this->getMedia->original_file;
     }
+
+    public function seller()
+    {
+        return $this->belongsTo(SellerProfile::class);
+    }
 }

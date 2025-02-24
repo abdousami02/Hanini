@@ -615,3 +615,15 @@ textarea.msg-text {
 .custom-switch-input:checked ~ .custom-switch-description {
   color: #495057;
 }
+
+.address-items > * {
+  /* margin-bottom: 5px; */
+  display: block;
+  line-height: 1.3rem;
+}
+
+
+/* invoice */
+.invoice-detail-value {
+  font-weight: 700;
+}
