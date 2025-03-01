@@ -59,12 +59,12 @@ jQuery(function($){
     $(".product-set-day").on('click', function (e) {
         // console.log(this);
         let currenct = this
-        $(".product-set-day").each(function(elem){
-            if(currenct != this){
-                console.log(this);
-                this.checked = false;
-            }
-        })
+        // $(".product-set-day").each(function(elem){
+        //     if(currenct != this){
+        //         console.log(this);
+        //         this.checked = false;
+        //     }
+        // })
         var url = $('meta[name="main-url"]').attr('content');
         var value = $(this).val().split('/');
 

@@ -11,17 +11,47 @@ base64_encode
 
 
 * Get Menu
-	url:    "/api/food/get-day-menu"
-	method: "POST"
+	url:    "/api/food/get-day-products"
+	method: "GET"
+    request: {
+        'willaya': (string),
+    }
+	response: {
+        "success": [
+            {
+                "id": 44,
+                "image": "http://hanini-food.com/image/menu.jpg" // urlencode(),
+                "name": "Fool",
+                "price": 1234,
+                "price_promo": null,
+                "currency": "DA",
+                "reviews": 5,
+                "vendor_id": 23,
+                "vendor_name": "Machawi"
+            }
+        ]
+    }   
+    set_cookies: laravel_session:hriLzWd38WVJPtbujgRy6eilrHUqKSja4EWP4Rpp
+
+code: 200
+
+* Get Product Details
+	url:    "/api/food/product-details/{id}"
+	method: "GET"
 	response: {
         "success": {
-            "id": 44,
-            "image": "http://hanini-food.com/image/menu.jpg" // urlencode(),
-            "name": "Fool",
-            "price": 1234,
-            "currency": "DA",
-            "description": "sum desc"   // base64_encode()
-        }
+                "id": 44,
+                "image": "http://hanini-food.com/image/menu.jpg" // urlencode(),
+                "name": "Fool",
+                "price": 1234,
+                "price_promo": null,
+                "currency": "DA",
+                "reviews": 5,
+                "vendor_id": 23,
+                "vendor_name": "Machawi"   
+                "description": "sum desc"   // base64_encode()
+            }
+    
     }   
 code: 200
 
@@ -47,6 +77,9 @@ code: 200
 * List Old Order
 	url:    "/api/food/get-all-orders"
 	method: "GET"
+    headers: {
+        Cookie: laravel_session=hriLzWd38WVJPtbujgRy6eilrHUqKSja4EWP4Rpp
+    }
 	response: {
         "success": [
             {

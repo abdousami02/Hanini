@@ -126,13 +126,13 @@ class ProductController extends Controller
             // dd($request);
             $product = Product::findOrFail($request->id);
             if($request->change_for == 'ofday' && $request->status == 1){
-                $other = Product::where('id', '!=', $product->id)->get();
-                foreach($other ?? [] as $elem){
-                    // dd($elem);
-                    $elem->update([
-                        'is_active' => 0,
-                    ]);
-                }
+                // $other = Product::where('id', '!=', $product->id)->get();
+                // foreach($other ?? [] as $elem){
+                //     // dd($elem);
+                //     $elem->update([
+                //         'is_active' => 0,
+                //     ]);
+                // }
                 $product->update([
                     'is_active' => $request->status,
                 ]);

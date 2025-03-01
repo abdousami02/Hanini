@@ -12,16 +12,19 @@ use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Requests\Food\SendOrderRequest;
 use App\Http\Resources\Food\OrderResource;
 use App\Http\Resources\Food\ProductResources;
+use App\Http\Resources\Food\ProductsListResources;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Session;
 
 class FoodApiController extends Controller
 {
-    public function getMenu()
+    public function getProducts(Request $request)
     {
         try{
-            $product = Product::where('is_active', 1)->first();
-            return response()->json(['success' => new ProductResources($product)]);
+            $willaya = $request->willaya;
+
+            $product = Product::where('is_active', 1)->get();
+            return response()->json(['success' => ProductsListResources::collection($product)]);
 
         }catch(\Exception $e){
             Log::info($e);
@@ -40,6 +43,19 @@ class FoodApiController extends Controller
         //     'description' => base64_encode($desc),
         // ];
         // return response()->json(['success' => $product]);
+    }
+
+    public function getDetails($id)
+    {
+        try{
+            $product = Product::findOrFail($id);
+            return response()->json(['success' => new ProductResources($product)]);
+
+        }catch(\Exception $e){
+            Log::info($e);
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
+
     }
 
     public function sendOrder(SendOrderRequest $request)

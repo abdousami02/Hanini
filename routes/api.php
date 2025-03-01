@@ -20,7 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('food')->group(function () {
-    Route::get('/get-day-menu', [FoodApiController::class, 'getMenu']);
+    Route::get('/get-day-products', [FoodApiController::class, 'getProducts']);
+    Route::get('/product-details/{id}', [FoodApiController::class, 'getDetails']);
+
     Route::post('/send-order', [FoodApiController::class, 'sendOrder']);
 
     Route::get('/get-all-orders', [FoodApiController::class, 'getAllOrder']);
