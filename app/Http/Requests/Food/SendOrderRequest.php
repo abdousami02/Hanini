@@ -26,7 +26,7 @@ class SendOrderRequest extends FormRequest
             'qte' => 'required|integer|min:1|max:99',
             'name' => 'required|max:50|regex:/^[a-zA-Z\s]*$/',
             'mobile' => ['required','regex:/^(07|06|05)\d{8}$/'],
-            'state' => 'required|integer|max:58',
+            'state' => 'required|string',
             'address' => 'required|string',
             'location' => 'nullable'
         ];
